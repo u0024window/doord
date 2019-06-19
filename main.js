@@ -1,4 +1,4 @@
-const saveTime = require('./savetime').saveTime;
+const saveSchedule = require('./saveSchedule').saveSchedule;
 require('./assets/userInfo');
 
 const user = UserInfo.wjt;
@@ -6,7 +6,7 @@ const user = UserInfo.wjt;
 var overTime = false;
 var counter = 0;
 var scheduleTimer = setInterval(function () {
-    if ( saveTime(user)=='success' || overTime) {
+    if ( saveSchedule(user)=='success' || overTime) {
         clearInterval(scheduleTimer);
     }else{
         counter++;

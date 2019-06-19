@@ -37,14 +37,14 @@ global.API = {
             return {
                 "expand": "starting_point",
                 "dasher": user.DASHER,
-                "scheduled_end_time": formatDate(appointment.DATE,appointment.END),
+                "scheduled_end_time": global.FormatDate(appointment.DATE,appointment.END),
                 "is_impromptu_dash": false,
-                "scheduled_start_time": formatDate(appointment.DATE,appointment.START),
+                "scheduled_start_time": global.FormatDate(appointment.DATE,appointment.START),
                 "vehicle": user.VEHICLE,
                 "starting_point": user.location
             }
         },
-        LOGPATH: './log/savetime.log',
+        LOGPATH: './log/saveSchedule.log',
     },
 
 }
