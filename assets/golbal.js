@@ -28,7 +28,7 @@ global.Location = {
     GLENDALE: '110'
 }
 
-global.API = {
+global.APIs = {
     saveSchedule: {
         method:'POST',
         path: '/v1/dashes/',
@@ -37,9 +37,9 @@ global.API = {
             return {
                 "expand": "starting_point",
                 "dasher": user.DASHER,
-                "scheduled_end_time": global.FormatDate(appointment.DATE,appointment.END),
+                "scheduled_end_time": FormatDate(appointment.DATE,appointment.END),
                 "is_impromptu_dash": false,
-                "scheduled_start_time": global.FormatDate(appointment.DATE,appointment.START),
+                "scheduled_start_time": FormatDate(appointment.DATE,appointment.START),
                 "vehicle": user.VEHICLE,
                 "starting_point": user.location
             }
