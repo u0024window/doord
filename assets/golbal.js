@@ -48,14 +48,13 @@ global.APIs = {
         LOGPATH: './log/saveSchedule.log',
     },
     aviliableSchedule:{
-        START:'2019-06-23T00:00:00-07:00',
-        END:'2019-06-24T00:00:00-07:00',
+        START:'2019-06-20T00:00:00-07:00',
+        END:'2019-06-25T00:00:00-07:00',
         location:[Location.MONPARK,Location.ELMOUTE],
         method:'GET',
         path:  function(){
             var locations = this.location.map(function(item){return 'starting_points='+item}).join('&');
             var path = '/v1/dasher_time_slots/?dasher=me&end_time='+this.END+'&expand=starting_point&impromptu_dash=0&include_recommended_dashes=0&start_time='+this.START+'&'+locations+'&vehicle_type=1';
-            console.log("path:",path);
             return path;
         },
         LOGPATH: './log/aviliableSchedule.log',
