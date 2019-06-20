@@ -32,8 +32,9 @@ global.APIs = {
     saveSchedule: {
         method:'POST',
         path: '/v1/dashes/',
-        data: function (user) {
-            const appointment = user.appointmentTime;
+        data: function (user,option) {
+            const appointment =Object.assign({},option?option.appointmentTime:user.appointmentTime);
+            const location = option?option.location:user.location;
             return {
                 "expand": "starting_point",
                 "dasher": user.DASHER,
@@ -41,18 +42,35 @@ global.APIs = {
                 "is_impromptu_dash": false,
                 "scheduled_start_time": FormatDate(appointment.DATE,appointment.START),
                 "vehicle": user.VEHICLE,
-                "starting_point": user.location
+                "starting_point": location+''
             }
         },
         LOGPATH: './log/saveSchedule.log',
     },
+    aviliableSchedule:{
+        START:'2019-06-23T00:00:00-07:00',
+        END:'2019-06-24T00:00:00-07:00',
+        location:[Location.MONPARK,Location.ELMOUTE],
+        method:'GET',
+        path:  function(){
+            var locations = this.location.map(function(item){return 'starting_points='+item}).join('&');
+            var path = '/v1/dasher_time_slots/?dasher=me&end_time='+this.END+'&expand=starting_point&impromptu_dash=0&include_recommended_dashes=0&start_time='+this.START+'&'+locations+'&vehicle_type=1';
+            console.log("path:",path);
+            return path;
+        },
+        LOGPATH: './log/aviliableSchedule.log',
+    }
 
 }
 global.LOG = {
     successPath:'./log/success.log',
     errorPath:'./log/error.log',
     format:function(data){
-        return new Date().toISOString() + os.EOL + data + os.EOL;
+        var timestr = new Date().toISOString();
+        if(+new Date()%60000!=0){
+            timestr = '';
+        }
+        return  timestr+ os.EOL + data;
     },
     write:function(path,data){
         var _this = this;
@@ -60,3 +78,4 @@ global.LOG = {
     }
 }
 
+global.COUNTER = 0;

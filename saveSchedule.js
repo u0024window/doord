@@ -2,11 +2,9 @@ require('./assets/golbal');
 
 const https = require('https');
 
-var counter = 0;
 const API = APIs.saveSchedule;
-exports.saveSchedule = function (user) {
-    counter++;
-    const data = API.data(user);
+exports.saveSchedule = function (user,saveScheduleDate) {
+    const data = API.data(user,saveScheduleDate);
     const req = https.request({
         hostname: RequestInfo.hostname,
         port: RequestInfo.port,
@@ -24,7 +22,7 @@ exports.saveSchedule = function (user) {
                 flag = false;
                 user.status = 'success'
             }
-            LOG.write(API.LOGPATH,'result-'+counter+':'+resData);
+            LOG.write(API.LOGPATH,'result-'+COUNTER+':'+resData);
             
             var appointmentTime = user.appointmentTime;
             console.log(user.status,'appointment-time:',user.location,appointmentTime.DATE,appointmentTime.START,appointmentTime.END);
@@ -33,7 +31,7 @@ exports.saveSchedule = function (user) {
         });
 
     });
-    LOG.write(API.LOGPATH,'reqData-'+counter+':'+JSON.stringify(data));
+    LOG.write(API.LOGPATH,'reqData-'+COUNTER+':'+JSON.stringify(data));
     req.write(JSON.stringify(data));
     req.end();
 }
