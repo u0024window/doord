@@ -3,6 +3,7 @@ require('./assets/userInfo');
 const https = require('https');
 
 const API = APIs.aviliableTime;
+const user = UserInfo;
 exports.aviliableTime = function(){
     https.request(
         {
