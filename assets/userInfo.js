@@ -36,6 +36,7 @@ UserInfo.wjt={
         END: '02:30:00'
     },
     RUN_HOUR:0.5,
+    WANTHOURS:3,
     FPS:5,
     status:'pedding',
     location:Location.ELMOUTE,

@@ -15,19 +15,21 @@ setInterval(function () {
     } else {
 
         // saveSchedule(user);
-        aviliableTime(user, function (resData) {
-            if (!resData || resData.length < 1) return;
+        aviliableTime(user, function () {
+            if (!ScheduleTime_RES || ScheduleTime_RES.length < 1) return;
             ScheduleTime_RES.forEach(function (item) {
-                // var start = item.start.substring(0, 2)*1 + item.start.substring(3, 5) * 1/60;
-                // var end = item.end.substring(0, 2) * 1 + item.end.substring(3, 5) * 1/60;
-                // if (end - start < 1 || start < 21 || end > 8) {
-                //     return;
-                // }
+                if(!TimeManage.aviliableTime_3(item.start,item.end,user.WANTHOURS)){
+                    return;
+                }
+                var time=TimeManage.wantTime(item.start,item.end);
+                if(!time){
+                    return;
+                }
                 saveSchedule(user,{
                     appointmentTime:{
                         DATE: item.date,
-                        START: item.start,
-                        END: item.end
+                        START: time[0],
+                        END: time[1]
                     },
                     location:item.point.id,
                    

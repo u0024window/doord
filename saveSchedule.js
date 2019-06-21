@@ -17,15 +17,14 @@ exports.saveSchedule = function (user,saveScheduleDate) {
             resData += data;
         });
         res.on('end', function () {
-         
+            var status = 'pedding';
             if (JSON.parse(resData).id) {
                 flag = false;
-                user.status = 'success'
+                status='success'
             }
             LOG.write(API.LOGPATH,'result-'+COUNTER+':'+resData);
             
-            var appointmentTime = user.appointmentTime;
-            console.log(user.status,'appointment-time:',user.location,appointmentTime.DATE,appointmentTime.START,appointmentTime.END);
+            console.log(status,'appointment-time:',data.starting_point,data.scheduled_end_time,data.scheduled_end_time);
             console.log('RESPONSE********END');
 
         });

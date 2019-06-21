@@ -20,33 +20,23 @@ exports.aviliableTime = function(user,callback){
             });
 
             res.on('end',function(){
-                var data= JSON.parse(resData);
-            
-                global.ScheduleTime_RES = data.map(function(item){
+                global.ScheduleTime_RES = JSON.parse(resData).map(function(item){
+                    var startDate = TimeManage.timeDistrictChange(item.start_time);
+                    var endDate = TimeManage.timeDistrictChange(item.end_time)
                     return {
                         point:Object.assign({},item.starting_point),
-                        date:item.start_time.split(/T|Z/)[0],
-                        start:item.start_time.split(/T|Z/)[1],
-                        end:item.end_time.split(/T|Z/)[1]
+                        date:startDate.date,
+                        start:startDate.time,
+                        end:endDate.time
                     }
                 });
                 if(callback){
-                    callback(data);
+                    callback();
                 }
-                var D = data.map(function(item){
-                    return {
-                        start:item.start_time,
-                        end:item.end_time,
-                        point:item.starting_point.id
-                    }
-                })
-                if(D.length>0){
-                    LOG.write(API.LOGPATH,'result-'+COUNTER+JSON.stringify(D));
+                if(ScheduleTime_RES.length>0){
+                    LOG.write(API.LOGPATH,'result-'+COUNTER+JSON.stringify(ScheduleTime_RES));
                 }
             });
-
-            // var appointmentTime = user.appointmentTime;
-            // console.log(user.status,'appointment-time:',user.location,appointmentTime.DATE,appointmentTime.START,appointmentTime.END);
             console.log('RESPONSE********END');
         }
     )
