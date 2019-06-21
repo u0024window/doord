@@ -1,24 +1,20 @@
 
 
 const https = require('https');
-const querystring = require('querystring');
-var saveSchedule = function () {
-
-      
     const req = https.request({
         hostname: 'api-dasher.doordash.com',
         port: 443,
-        path:  '/v1/dasher_time_slots/',
+        path:  '/v1/dasher_time_slots/?dasher=me&end_time=2019-06-22T04:00:00-07:00&expand=starting_point&impromptu_dash=0&include_recommended_dashes=0&start_time=2019-06-21T00:00:00-07:00&starting_points=451&starting_points=452&vehicle_type=1',
         method: 'GET',
         headers: {
             Host: 'api-dasher.doordash.com',
             'Content-Type': 'application/json',
-            Cookie: 'dd_device_id=dx_1569b59eef854450a0035f030c1d1f2c; dd_session_id=sx_3517db71e0ce4a849806287e59ffb05a; doordash_attempt_canary=0; dd_login_id=lx_86c4bd3ee8314b1880c044918c22427d',
+            Cookie: 'dd_device_id=dx_060b0027866d4c37bcb18940315dbabc; dd_session_id=sx_1adec427702046818069eb21effb6e35; doordash_attempt_canary=0; dd_login_id=lx_148b3aa2fa774f47b0009cbca633d076',
             Connection: 'keep-alive',
             'Client-Version': 'ios v2.12.0 b124.190611',
             Accept: 'application/json',
             'Accept-Language': 'zh-cn',
-            Authorization: 'JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmlnX2lhdCI6MTU2MDgzNjEwNiwidXNlciI6eyJhdXRoX3ZlcnNpb24iOjMsImlzX3N0YWZmIjpmYWxzZSwiaWQiOjEwNDA1NDYxOCwiZW1haWwiOiI3NTgyNjkzNEBxcS5jb20ifSwiZXhwIjoxNTYxMDk1MzA2fQ.NrPp2uNJpWjSgyqf6ve_MVXeL7N-z2MXebOfoxOoAGs',
+            Authorization: 'JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmlnX2lhdCI6MTU2MTEzMDU1MCwidXNlciI6eyJhdXRoX3ZlcnNpb24iOjIsImlzX3N0YWZmIjpmYWxzZSwiaWQiOjExNDUyNDc2OCwiZW1haWwiOiJtaW5nMzkyMjU5QDE2My5jb20ifSwiZXhwIjoxNTYxMzg5NzUwfQ.5zwEU-wiGGLuX9Yz9fTIvrMd_GwY-aEOzU5dWlZMpS4',
             'User-Agent': 'DoordashDriver/124.190611 CFNetwork/974.2.1 Darwin/18.0.0',
         }
     }, (res) => {
@@ -32,10 +28,5 @@ var saveSchedule = function () {
         });
 
     });
-   
-    req.write(postData);
     req.end();
-}
-
-saveSchedule();
 

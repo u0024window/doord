@@ -54,7 +54,7 @@ global.APIs = {
     aviliableSchedule:{
         START:'2019-06-21T00:00:00-07:00',
         END:'2019-06-22T00:00:00-07:00',
-        location:[Location.MONPARKf,Location.ELMOUTE],
+        location:[Location.MONPARK,Location.ELMOUTE],
         method:'GET',
         path:  function(){
             var locations = this.location.map(function(item){return 'starting_points='+item}).join('&');
