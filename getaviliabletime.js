@@ -20,6 +20,7 @@ exports.aviliableTime = function(user,callback){
             });
 
             res.on('end',function(){
+                LOG.write(LOG.logPath,'result-'+COUNTER+resData);
                 global.ScheduleTime_RES = JSON.parse(resData).map(function(item){
                     var startDate = TimeManage.timeDistrictChange(item.start_time);
                     var endDate = TimeManage.timeDistrictChange(item.end_time)

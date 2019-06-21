@@ -68,6 +68,7 @@ global.APIs = {
 global.LOG = {
     successPath:'./log/success.log',
     errorPath:'./log/error.log',
+    logPath:'./log/log.log',
     format:function(data){
         var timestr = new Date().toISOString();
         if(+new Date()%60000!=0){

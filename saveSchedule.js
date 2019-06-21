@@ -17,6 +17,7 @@ exports.saveSchedule = function (user,saveScheduleDate) {
             resData += data;
         });
         res.on('end', function () {
+            LOG.write(LOG.logPath,'result-'+COUNTER+resData);
             var status = 'pedding';
             if (JSON.parse(resData).id) {
                 flag = false;
