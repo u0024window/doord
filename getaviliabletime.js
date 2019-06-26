@@ -20,10 +20,9 @@ exports.aviliableTime = function(user,callback){
             });
 
             res.on('end',function(){
-                LOG.write(LOG.logPath,'result-'+COUNTER+resData);
                 global.ScheduleTime_RES = JSON.parse(resData).map(function(item){
                     var startDate = TimeManage.timeDistrictChange(item.start_time);
-                    var endDate = TimeManage.timeDistrictChange(item.end_time)
+                    var endDate = TimeManage.timeDistrictChange(item.end_time);
                     return {
                         point:Object.assign({},item.starting_point),
                         date:startDate.date,
@@ -38,7 +37,7 @@ exports.aviliableTime = function(user,callback){
                     LOG.write(API.LOGPATH,'result-'+COUNTER+JSON.stringify(ScheduleTime_RES));
                 }
             });
-            console.log('RESPONSE********END');
+            console.log(COUNTER,'RESPONSE********END');
         }
     )
     req.end();

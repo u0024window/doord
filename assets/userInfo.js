@@ -31,15 +31,15 @@ UserInfo.wjt={
     VEHICLE: '4539870',
     "applicant_unique_link": "95TmcKkOCNgxKOnqz6OHSPVbMRbURm2VoPow2uQXT5aI4OqXEs",
     appointmentTime : {
-        DATE:'2019-06-23',
-        START: '00:30:00',
-        END: '02:30:00'
+        DATE:'2019-07-01',
+        START: '09:00:00',
+        END: '22:00:00'
     },
-    RUN_HOUR:0.5,
-    WANTHOURS:3,
-    FPS:5,
+    RUN_HOUR:5,
+    WANTHOURS:4,
+    FPS:3,
     status:'pedding',
-    location:Location.ELMOUTE,
-    cookie:'dd_device_id=dx_aa8d8539ab624026906bc807a0913d04; dd_session_id=sx_5d1d84128b854d978f926bf917b29c12; doordash_attempt_canary=0; dd_login_id=lx_582be0a0db544f9aacadcfe2ed72d0af',
-    authorization: 'JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmlnX2lhdCI6MTU2MTA2ODUwNCwidXNlciI6eyJhdXRoX3ZlcnNpb24iOjIsImlzX3N0YWZmIjpmYWxzZSwiaWQiOjExNDUyNDc2OCwiZW1haWwiOiJtaW5nMzkyMjU5QDE2My5jb20ifSwiZXhwIjoxNTYxMzI3NzA0fQ.KJygcADOieUwxhj8Px98DSi7CCPPlGXmh60p27Or9y8',
+    location:Location.MONPARK,
+    cookie:'dd_device_id=dx_004afa94dd474e9b8146583eb1920853; dd_session_id=sx_ca78ba1895a243b89aa2dd9d9bfc7d04; doordash_attempt_canary=0; dd_login_id=lx_0f7a32819ab9410faee63e4143ff5bec',
+    authorization: 'JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmlnX2lhdCI6MTU2MTQ0MDQ0NSwidXNlciI6eyJhdXRoX3ZlcnNpb24iOjIsImlzX3N0YWZmIjpmYWxzZSwiaWQiOjExNDUyNDc2OCwiZW1haWwiOiJtaW5nMzkyMjU5QDE2My5jb20ifSwiZXhwIjoxNTYxNjk5NjQ1fQ.tPAYB2qhfb7G2VZ8AfgHh8nbtJwErxj_mXyj8DBcuC0',
 }
